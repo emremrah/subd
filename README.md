@@ -19,7 +19,7 @@ To run the API:
 
     python api.py
 
-The API will run on port 5000.
+The API will run on port 5000. See swagger.yml for usage.
 
 ## Getting Started
 

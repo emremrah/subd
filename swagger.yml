@@ -1,0 +1,55 @@
+openapi: 3.0.0
+info:
+  title: Subdomain finder
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:5000
+    description: Local development server
+
+paths:
+  /:
+    get:
+      summary: Get all domain names
+      operationId: getAll
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /find-subdomains:
+    parameters:
+      - in: query
+        name: domain
+        schema:
+          type: string
+          description: Domain to be searched
+      - in: query
+        name: maxTrials
+        schema:
+          type: integer
+          description: Maximum number of subdomains to try
+      - in: query
+        name: searchRandom
+        schema:
+          type: boolean
+          description: Whether to search subdomains in random order
+    get:
+      summary: Find subdomains
+      operationId: findSubdomains
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  subdomains:
+                    type: array
+                    items:
+                      type: string
