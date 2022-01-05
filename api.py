@@ -8,8 +8,6 @@ from utils import read_subdomains
 
 dotenv.load_dotenv(".env")
 
-SUBDOMAINS = read_subdomains()
-
 
 @app.route("/")
 def get_domains():
