@@ -1,0 +1,7 @@
+psycopg2-binary
+flask
+flask-sqlalchemy
+tqdm
+requests
+python-whois
+python-dotenv
