@@ -30,3 +30,8 @@ Create a python environment and install the required packages:
     pip install -r requirements.txt
 
 Postgresql database is required.
+
+## To-Do
+
+- [ ] Search for subdomains in active mode with multithreading using `threading` or `concurrent` module.
+- [ ] Add endpoint to get subdomains and whois info for a domain from the db.
