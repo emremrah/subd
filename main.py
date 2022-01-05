@@ -13,7 +13,7 @@ SUBDOMAINS = read_subdomains()
 DOMAINS = read_domains()
 
 
-def process_domains(max_trials, search_random, method) -> Generator[str, None, None]:
+def process_domains(max_trials, search_random, method, domains=DOMAINS) -> Generator[str, None, None]:
     """
     Find whois data for domains, find subdomains and save both to db.
 
@@ -29,7 +29,7 @@ def process_domains(max_trials, search_random, method) -> Generator[str, None, N
     if method not in ['active', 'passive']:
         raise ValueError(f"Invalid method: {method}")
 
-    for domain in DOMAINS:
+    for domain in domains:
         # check if domain is already in db. If not, add it
         if not db.session.query(Domain).filter_by(name=domain).first():
             domain_obj = get_whois(domain)

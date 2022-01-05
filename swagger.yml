@@ -25,6 +25,7 @@ paths:
     parameters:
       - in: query
         name: domain
+        required: true
         schema:
           type: string
           description: Domain to be searched
@@ -32,12 +33,22 @@ paths:
         name: maxTrials
         schema:
           type: integer
-          description: Maximum number of subdomains to try
+          description: Maximum number of subdomains to try. Tries all if not specified
       - in: query
         name: searchRandom
         schema:
           type: boolean
+          default: false
           description: Whether to search subdomains in random order
+      - in: query
+        name: method
+        required: true
+        schema:
+          type: string
+          description: Search method to use
+          enum:
+            - active
+            - passive
     get:
       summary: Find subdomains
       operationId: findSubdomains
@@ -53,3 +64,13 @@ paths:
                     type: array
                     items:
                       type: string
+        400:
+          description: Bad request if domain or method is not specified
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
